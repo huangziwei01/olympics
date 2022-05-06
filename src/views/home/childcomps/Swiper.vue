@@ -1,6 +1,6 @@
 <template>
   <div id="swiper" class="w">
-    <el-carousel trigger="click" height="900px" :interval="6000">
+    <el-carousel trigger="click" height="900px" >
 
       
 
