@@ -47,6 +47,7 @@ export default {
   padding-top: 62px;
   background-color: #FAFAFA;
   text-align: center;
+  padding-bottom:100px;
 }
 
 #news h2 {

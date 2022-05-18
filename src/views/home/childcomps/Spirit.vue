@@ -31,6 +31,7 @@ export default {
   padding-top: 62px;
   padding-left:100px;
   padding-right:100px;
+  padding-bottom: 100px;
   background-color: #FAFAFA;
   text-align: center;
 }

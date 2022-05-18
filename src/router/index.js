@@ -15,6 +15,8 @@ const Future = () => import('views/stories/Future')
 const Love = () => import('views/stories/Love')
 
 
+
+
 const routes = [
   {
     path:'',
@@ -57,7 +59,8 @@ const routes = [
         component: Future
       },
     ]
-  }
+  },
+  
 ]
 
 const router = new VueRouter({

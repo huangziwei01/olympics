@@ -1,13 +1,13 @@
 <template>
   <div id="home">
-    <home-header></home-header>
-    <Swiper></Swiper>
-    <athletes-cards></athletes-cards>
-    <Medals></Medals>
-    <History></History>
-    <Spirit></Spirit>
-    <News></News>
-    <!-- <back-top>回到顶部</back-top> -->
+    <home-header/>
+    <Swiper/>
+    <athletes-cards/>
+    <Medals/>
+    <History/>
+    <Spirit/>
+    <News/>
+    <back-top/>
   </div>
 </template>
 
@@ -20,7 +20,7 @@ import History from './childcomps/History'
 import Spirit from './childcomps/Spirit'
 import News from './childcomps/News'
 
-// import BackTop from 'components/common/BackTop'
+import BackTop from 'components/common/BackTop'
 
 export default {
   name: '',
@@ -36,7 +36,7 @@ export default {
     HomeHeader,
     History,
     Spirit,
-    // BackTop,
+    BackTop,
     News
   }
 }

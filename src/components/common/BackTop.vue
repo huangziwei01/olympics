@@ -1,56 +1,78 @@
 <template>
   <div>
-    <div class="back" v-if="isShow">
-      <slot @click="backTop"></slot>
+    <div class="back" v-show="isShow" @click="backTop">
+      <img src="~assets/img/arrow_top.jpg"/>
     </div>
   </div>
 </template>
 
 <script>
+import debounce from 'lodash/debounce'
+
 export default {
   name: '',
   data () {
     return {
       isShow: false,
-      scrollTop:0
+      showScrollTop:0,
+      backScrollTop:0
     }
   },
   methods: {
-    showBtn() {
-      this.scrollTop = window.pageYOffset
-      if (this.scrollTop > 1000) {
+    // showBtn() {
+    //   this.scrollTop = window.pageYOffset
+    //   console.log(this.scrollTop);
+    //   if (this.scrollTop > 1000) {
+    //     this.isShow = true
+    //   } else {
+    //     this.isShow = false
+    //   }
+    // },
+    showBtn: debounce(function () {
+      this.showScrollTop = window.pageYOffset
+      console.log('执行了');
+      if (this.showScrollTop > 2000) {
         this.isShow = true
       } else {
         this.isShow = false
       }
-      // console.log(this);
-      // console.log(this.isShow);
+    },60),
+    getBackScrollTop(){
+      this.backScrollTop = window.pageYOffset
     },
     backTop() {
       const that = this
       let timer = setInterval(() => {
-        let ispeed = Math.floor(-that.scrollTop / 5)
-        document.documentElement.scrollTop = document.body.scrollTop = that.scrollTop + ispeed
-        if (that.scrollTop === 0) {
+        let ispeed = Math.floor(-that.backScrollTop / 7)
+        document.documentElement.scrollTop = that.backScrollTop + ispeed
+        if (that.backScrollTop === 0) {
           clearInterval(timer)
         }
-      }, 30)
+      }, 20)
+      
     }
   },
   mounted () {
-    window.addEventListener('scroll',this.showBtn)
+    let that = this
+    window.addEventListener('scroll',that.showBtn)
+    window.addEventListener('scroll',that.getBackScrollTop)
   }
 }
 </script>
 
 <style scoped>
 .back {
-  width: 100px;
-  height: 100px;
-  position: absolute;
-  background-color:red;
-  top: 0;
-  right: 60px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 40px;
+  right: 50px;
   z-index: 100;
+}
+
+.back img {
+  width: 100%;
+  border-radius: 50%;
 }
 </style>
